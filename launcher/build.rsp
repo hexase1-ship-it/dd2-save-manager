@@ -1,0 +1,15 @@
+# How DD2SaveManager.exe is compiled. Used by build.bat and by tools\package.mjs, which put
+# /out:<file> in front of this (the compiler wants it before the source file). Paths are
+# relative to the project folder.
+/nologo
+/target:winexe
+/platform:x64
+/optimize+
+/codepage:65001
+/win32icon:launcher\app.ico
+/win32manifest:launcher\app.manifest
+/r:System.Windows.Forms.dll
+/r:System.Drawing.dll
+/r:launcher\webview2\Microsoft.Web.WebView2.Core.dll
+/r:launcher\webview2\Microsoft.Web.WebView2.WinForms.dll
+launcher\Launcher.cs

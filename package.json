@@ -1,0 +1,14 @@
+{
+  "name": "dd2-save-manager",
+  "version": "1.0.2",
+  "private": true,
+  "description": "Dragon's Dogma 2 save manager / editor (local, no dependencies)",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node test/roundtrip.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

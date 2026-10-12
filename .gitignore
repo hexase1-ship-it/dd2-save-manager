@@ -1,0 +1,13 @@
+# Things the program makes while it runs
+backups/
+looks/
+data/dd2/names.json
+data/dd2/icons.png
+data/dd2/icons.json
+data/dd2/charaedit.json
+
+# Build output
+DD2SaveManager.exe
+bin/
+runtime/
+*.zip

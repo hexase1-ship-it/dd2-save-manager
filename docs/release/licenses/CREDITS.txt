@@ -1,0 +1,26 @@
+DD2 Save Manager - credits
+
+This tool's own code was written from scratch. It builds on what others worked out and
+published about the game's formats:
+
+  MandarinJuice (mi5hmash, MIT)        https://github.com/mi5hmash/MandarinJuice
+      The save file container and its encryption.
+
+  ree-save-editor (kvasszn)            https://github.com/kvasszn/ree-save-editor
+      The save tree format. The files in data\dd2\ list how the game's data tables that
+      this tool reads are laid out, and what the enum values in them are called; they
+      were taken from that project's type and enum dumps for Dragon's Dogma 2.
+
+  REE.PAK.Tool (Ekey)                  https://github.com/Ekey/REE.PAK.Tool
+      The game's archive format.
+
+  REMSG_Converter (dtlnor)             https://github.com/dtlnor/REMSG_Converter
+      The game's message file format.
+
+Shipped with this package, each under its own license (see the files next to this one):
+
+  Node.js                               runtime\node.exe        node-LICENSE.txt
+  Microsoft Edge WebView2 SDK files     bin\                    webview2-LICENSE.txt, webview2-NOTICE.txt
+
+Dragon's Dogma 2 and all related names are trademarks of CAPCOM CO., LTD. This is an
+unofficial tool and contains no game assets.

@@ -1,0 +1,67 @@
+DD2 Save Manager - what is in this package and how to build it
+==============================================================
+
+Source code: https://github.com/hexase1-ship-it/dd2-save-manager
+
+
+WHAT THE FILES ARE
+
+  DD2SaveManager.exe
+      The window. A small C# program (WinForms + WebView2) that starts the local server and
+      shows its page. Its whole source is in launcher\Launcher.cs in this package.
+
+  src\, web\
+      The program itself, as plain JavaScript, HTML and CSS. Nothing is compiled, bundled or
+      minified, and there are no npm dependencies. src\ is the local server and the save
+      format code; web\ is the page the window shows.
+
+  runtime\node.exe
+      The official Node.js 24.18.0 binary for Windows x64, unmodified, from
+      https://nodejs.org/dist/v24.18.0/win-x64/node.exe
+      SHA-256: 9a4eb5f1c29c6a2e93852ead46b999e284a6a5ca8bab4d4e241d587d025a52de
+      (the same value nodejs.org lists in SHASUMS256.txt for that file)
+
+  bin\Microsoft.Web.WebView2.Core.dll, bin\Microsoft.Web.WebView2.WinForms.dll,
+  bin\WebView2Loader.dll
+      Microsoft's WebView2 SDK files, unmodified, from the NuGet package
+      Microsoft.Web.WebView2 1.0.4022.49. The same three files are in launcher\webview2\,
+      where the build reads them from.
+
+  data\dd2\rszdd2.json, data\dd2\enumsdd2.json
+      Data, not code: how the game's data tables that this tool reads are laid out, and the
+      names of the enum values in them. A small part of the Dragon's Dogma 2 dumps from
+      https://github.com/kvasszn/ree-save-editor
+
+  licenses\
+      The licenses of Node.js and the WebView2 SDK, and the credits.
+
+
+BUILDING THE EXE
+
+  Needs only Windows 10 or 11 (64-bit). The C# compiler used is the one that ships with
+  Windows as part of .NET Framework 4:
+      %WINDIR%\Microsoft.NET\Framework64\v4.0.30319\csc.exe
+
+  1. Close DD2 Save Manager if it is running.
+  2. Run launcher\build.bat.
+
+  That compiles launcher\Launcher.cs into DD2SaveManager.exe with the options listed in
+  launcher\build.rsp, and copies the three WebView2 files from launcher\webview2\ to bin\.
+
+
+RUNNING WITHOUT THE EXE
+
+      runtime\node.exe src\server.js
+
+  starts the local server (127.0.0.1 only) and opens the page in your default browser.
+  launcher\run-in-console.bat does the same with a Node.js you have installed yourself.
+
+
+MAKING THE ZIP
+
+  From a copy of the source repository, with Node.js 24 and the game installed:
+
+      node tools\package.mjs --zip <file.zip>
+
+  It copies the files, builds the exe from launcher\Launcher.cs, adds the node.exe it is run
+  with, then starts the result once to check that it works before zipping it.
